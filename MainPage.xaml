@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetCalculatorApp.MainPage">
+
+    <StackLayout Padding="20" Spacing="10">
+        <Entry x:Name="AmountEntry" Placeholder="Сумма" Keyboard="Numeric" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Описание" />
+
+        <Button Text="Добавить доход" Clicked="OnAddIncomeClicked" />
+        <Button Text="Добавить расход" Clicked="OnAddExpenseClicked" />
+        <Button Text="Сохранить" Clicked="OnSaveClicked" />
+
+        <Label x:Name="BalanceLabel" Text="Баланс: 0" FontSize="18" FontAttributes="Bold" />
+
+        <CollectionView ItemsSource="{Binding Transactions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Label Text="{Binding Description}" WidthRequest="150" />
+                        <Label Text="{Binding Amount}" FontAttributes="Bold" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
